@@ -1,0 +1,49 @@
+name: Build and Deploy to ECS
+
+on:
+  push:
+    branches:
+      - main 
+
+env:
+  AWS_REGION: us-east-1
+  PROJECT_NAME: supermario 
+  ECR_REPOSITORY: supermario 
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v2
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Login to Amazon ECR
+        id: login-ecr
+        uses: aws-actions/amazon-ecr-login@v2
+
+      - name: Build Docker image and push with both tags
+        env:
+          ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
+          IMAGE_TAG: ${{ github.sha }}
+        run: |
+          IMAGE_URI_BASE=$ECR_REGISTRY/$ECR_REPOSITORY
+          docker build -t $IMAGE_URI_BASE:latest -t $IMAGE_URI_BASE:$IMAGE_TAG .
+          docker push $IMAGE_URI_BASE:latest
+          docker push $IMAGE_URI_BASE:$IMAGE_TAG
+
+      - name: Force ECS service redeployment (using latest tag)
+        run: |
+          aws ecs update-service \
+            --cluster $PROJECT_NAME \
+            --service $PROJECT_NAME \
+            --task-definition $PROJECT_NAME \
+            --force-new-deployment \
+            --region $AWS_REGION
