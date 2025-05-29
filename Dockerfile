@@ -12,6 +12,7 @@ RUN useradd -ms /bin/bash mario \
     && chown -R mario:mario /usr/local/tomcat
 
 EXPOSE 8080
+
 CMD ["catalina.sh", "run"]
 
 USER mario
