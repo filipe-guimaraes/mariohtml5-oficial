@@ -2,7 +2,7 @@ FROM public.ecr.aws/docker/library/tomcat:9.0
 
 LABEL maintainer="github.com/PengBAI"
 
-RUN rm -rf /usr/local/tomcat/webapps/ROOT/*
+RUN rm -rf /usdocke rps r/local/tomcat/webapps/ROOT/*
 
 ADD webapp/ /usr/local/tomcat/webapps/ROOT/
 

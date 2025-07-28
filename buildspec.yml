@@ -5,7 +5,7 @@ phases:
     commands: 
     - echo Logging in to Amazon ECR...
     # update the following line with your own region and account ID (view the Push Commands in the console)
-    - aws ecr get-login-password --region us-west-1 | docker login --username AWS --password-stdin 339712958065.dkr.ecr.us-west-1.amazonaws.com
+    - aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 339712958065.dkr.ecr.us-east-1.amazonaws.com/supermario
   build: 
     commands: 
     - echo Build started on `date` 
@@ -13,16 +13,16 @@ phases:
     # update the following line with the name of your own ECR repository
     - docker build -t supermario .
     # update the following line with the URI of your own ECR repository (view the Push Commands in the console)
-    - docker tag supermario:latest 339712958065.dkr.ecr.us-west-1.amazonaws.com/supermario:latest
+    - docker tag supermario:latest 339712958065.dkr.ecr.us-east-1.amazonaws.com/supermario:latest
   post_build: 
     commands: 
     - echo Build completed on `date` 
     - echo pushing to repo
     # update the following line with the URI of your own ECR repository
-    - docker push 339712958065.dkr.ecr.us-west-1.amazonaws.com/supermario:latest
-    # writing the imagedefinitions.json file    
+    - docker push 339712958065.dkr.ecr.us-east-1.amazonaws.com/supermario:latest
+    # writing the imagedefinitions.json file
     - echo Writing image definitions file...
-    - printf '[{"name":"supermario","imageUri":"%s"}]' 339712958065.dkr.ecr.us-west-1.amazonaws.com/supermario:latest > imagedefinitions.json 
+    - printf '[{"name":"supermario","imageUri":"%s"}]' 339712958065.dkr.ecr.us-east-1.amazonaws.com/supermario:latest > imagedefinitions.json 
 artifacts:
   files:
     - imagedefinitions.json
