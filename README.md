@@ -1,20 +1,32 @@
-# Docker Super Marioo
-Infinite Mario in HTML5 JavaScript - using Canvas and Audio elements
+# 2 AI - XP Edu - Docker Super Mario
+Infinite Mario in HTML5 JavaScript
 
-[![Docker Hub](https://img.shields.io/badge/docker-ready-blue.svg)](https://hub.docker.com/r/pengbai/docker-supermario/)
-[![](https://imagelayers.io/badge/pengbai/docker-supermario:latest.svg)](https://imagelayers.io/?images=pengbai/docker-supermario:latest 'Get your own badge on imagelayers.io')
+## Premissas:
+- Docker instalado. Utilizo o Docker Desktop para Windows com integração com o WSL2. Nas configurações do Docker Desktop você vai encontrar onde habilita a integração com a sua distribuição do WSL.
 
-[![asciicast](https://asciinema.org/a/46186.png)](https://asciinema.org/a/46186)
+![alt text](image.png)
 
-Image on docker hub: [https://hub.docker.com/r/pengbai/docker-supermario/](https://hub.docker.com/r/pengbai/docker-supermario/)
+- Terminal Linux. É possível executar no windows também, mas a aula será realizada em Linux;
 
-## Description
+- AWS CLI v2. Precisaremos do AWS CLI para executar alguns comandos, principalmente durante as fases 1 e 2;
 
-Run with mapping container's 8080 port, and use your navigator http://localhost:8600:
-```
-docker run -d -p 8600:8080 pengbai/docker-supermario
-```
+- Uma conta na AWS para criamos a nossa infraestrutura e o pipeline de CI/CD;
 
-[![](https://github.com/PengBAI/mariohtml5/blob/master/demo/demo.PNG?raw=true)](https://github.com/PengBAI/mariohtml5/blob/master/demo/demo.PNG?raw=true)
+- Um repositório de código no Github que será posteriormente a origem do nosso pipeline;
 
+## Etapas
+Nessa aula vamos usar essa aplicação de base para criamos o nosso ambiente na AWS passando pelas 3 fases abaixo:
 
+1. Testes Locais
+
+![alt text](image-1.png)
+
+2. Construção do ambiente na AWS com Deploy Manual
+
+![alt text](image-2.png)
+
+3. Deploy 100% automatizado com GitHub + CodePipeline integrados
+
+![alt text](image-3.png)
+
+### Bora para a prática!
