@@ -14,6 +14,9 @@ Infinite Mario in HTML5 JavaScript
 
 - Um repositório de código no Github que será posteriormente a origem do nosso pipeline;
 
+## Diagrama de Arquitetura
+O arquivo 2-aula-interativa.drawio refere-se ao diagrama de arquitetura desse projeto.
+
 ## Etapas
 Nessa aula vamos usar essa aplicação de base para criamos o nosso ambiente na AWS passando pelas 3 fases abaixo:
 
