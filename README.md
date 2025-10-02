@@ -32,4 +32,4 @@ Nessa aula vamos usar essa aplicação de base para criamos o nosso ambiente na 
 
 ![alt text](image-3.png)
 
-### Bora para a prática!
+### Bora para a prática! 🚀🚀
